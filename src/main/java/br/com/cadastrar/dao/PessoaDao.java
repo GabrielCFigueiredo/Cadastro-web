@@ -9,6 +9,12 @@ import java.util.List;
 import java.util.Optional;
 
 public class PessoaDao implements ICadastroDao {
+    private final Connection connection;
+
+    public PessoaDao(Connection connection) {
+        this.connection = connection;
+    }
+
     @Override
     public Pessoa iserir(Pessoa pessoa) {
         try (Connection connection = ConnectionFactory.getConnection()) {
