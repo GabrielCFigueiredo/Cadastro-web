@@ -16,7 +16,7 @@ public class PessoaDao implements ICadastroDao {
     }
 
     @Override
-    public Pessoa iserir(Pessoa pessoa) {
+    public Pessoa save(Pessoa pessoa) {
         try (Connection connection = ConnectionFactory.getConnection()) {
             String sql = ("INSERT INTO Pessoa(nomePessoa, email) VALUES(?,?)");
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -33,7 +33,7 @@ public class PessoaDao implements ICadastroDao {
             throw new RuntimeException(e);
         }
         ;
-        return null;
+        return pessoa;
     }
 
     @Override

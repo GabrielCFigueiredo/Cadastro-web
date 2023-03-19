@@ -1,15 +1,18 @@
 package br.com.cadastrar;
 
 import br.com.cadastrar.dao.PessoaDao;
+import br.com.cadastrar.infra.ConnectionFactory;
 import br.com.cadastrar.model.Pessoa;
 
+import java.sql.Connection;
 import java.util.Optional;
 
 public class AtualizarPessoa {
 
     public static void main(String[] args) {
+        Connection connection = ConnectionFactory.getConnection();
 
-        PessoaDao pessoaDao = new PessoaDao();
+        PessoaDao pessoaDao = new PessoaDao(connection);
         Optional<Pessoa> pessoaOptional = pessoaDao.findById(5L);
 
         Pessoa pessoa = pessoaOptional.get();

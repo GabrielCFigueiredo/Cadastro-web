@@ -1,14 +1,17 @@
 package br.com.cadastrar;
 
 import br.com.cadastrar.dao.PessoaDao;
+import br.com.cadastrar.infra.ConnectionFactory;
 import br.com.cadastrar.model.Pessoa;
 
+import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
 
 public class ListarPessoas {
     public static void main(String[] args) {
-        PessoaDao pessoaDao = new PessoaDao();
+        Connection connection = ConnectionFactory.getConnection();
+        PessoaDao pessoaDao = new PessoaDao(connection);
 
         /*List<Pessoa> pessoas = pessoaDao.findAll();
 
